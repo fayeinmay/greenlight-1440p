@@ -10,6 +10,7 @@ import Stats from './stats'
 import VideoComponent from './render/video'
 import WebGpuComponent from './render/webgpu'
 import AudioComponent from './render/audio'
+import type { xCloudStreamConfig } from '../../types/index'
 
 export default class xCloudPlayer {
 
@@ -22,6 +23,7 @@ export default class xCloudPlayer {
     }
 
     private _elementId: string
+    private _streamConfig: xCloudStreamConfig | undefined
     private _isDestoyed: boolean = false
     private _iceHelper = new Ice(this)
     private _sdpHelper = new Sdp(this)
@@ -30,10 +32,11 @@ export default class xCloudPlayer {
     private _videoComponent: VideoComponent | WebGpuComponent | undefined
     private _audioComponent: AudioComponent | undefined
 
-    constructor(elementId: string) {
+    constructor(elementId: string, streamConfig?: xCloudStreamConfig) {
         console.log('xCloudPlayer constructing...');
 
         this._elementId = elementId;
+        this._streamConfig = streamConfig;
         this._peerConnection.addTransceiver('audio', { direction: 'sendrecv' })
         const videoTransceiver = this._peerConnection.addTransceiver('video', { direction: 'recvonly' })
         videoTransceiver.setCodecPreferences(this._sdpHelper.getDefaultCodecPreferences())
@@ -63,6 +66,11 @@ export default class xCloudPlayer {
 
     getElementId() {
         return this._elementId
+    }
+
+    getStreamDimensions() {
+        const is1440p = this._streamConfig?.resolution === 1440
+        return { width: is1440p ? 2560 : 1920, height: is1440p ? 1440 : 1080 }
     }
 
     async createOffer() {

@@ -9,7 +9,7 @@ export interface xCloudStreamConfig {
     type: 'home' | 'cloud';
     language: string;
     host: string;
-    resolution: 720 | 1080;
+    resolution: 720 | 1080 | 1440;
 }
 
 export interface startStreamResponse {

@@ -33,7 +33,7 @@ export function PlayerPage() {
             type: xCloud ? 'cloud' : 'home',
             language: 'en-US',
             host: xCloud ? 'https://uks.core.gssv-play-prod.xboxlive.com' : 'https://uks.core.gssv-play-prodxhome.xboxlive.com',
-            resolution: 1080
+            resolution: 1440
         };
 
         const streamSession = await startStreamMutation.mutateAsync({

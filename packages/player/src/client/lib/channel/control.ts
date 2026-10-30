@@ -51,6 +51,14 @@ export default class ControlChannel extends Channel {
         this.sendGamepadState(0, true)
         this.sendGamepadState(0, false)
 
+        // Select the encoding tier as well as advertising the client dimensions.
+        if(this.getPlayer().getStreamDimensions().height === 1440){
+            this.send(JSON.stringify({
+                message: 'userRequestedResolutionUpdate',
+                resolutionAlias: '1440',
+            }))
+        }
+
         // if(this.getPlayer()._config.keyframe_interval > 0) {
         //     this._keyframeInterval = setInterval(() => {
         //         this.requestKeyframeRequest(true)

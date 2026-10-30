@@ -197,6 +197,7 @@ const httpPost = <T>(xStreamToken:xStreamToken, xCloudStreamConfig:xCloudStreamC
 }
 
 const getDeviceInfo = (xCloudStreamConfig:xCloudStreamConfig) => {
+    const is1440p = xCloudStreamConfig.resolution === 1440
     return JSON.stringify({
         'appInfo': {
             'env': {
@@ -215,14 +216,14 @@ const getDeviceInfo = (xCloudStreamConfig:xCloudStreamConfig) => {
                 'sdktype': 'web',
             },
             'os': {
-                'name': (xCloudStreamConfig.resolution === 1080) ? 'windows' : 'android',
+                'name': (xCloudStreamConfig.resolution === 1080 || is1440p) ? 'windows' : 'android',
                 'ver': '22631.2715',
                 'platform': 'desktop',
             },
             'displayInfo': {
                 'dimensions': {
-                    'widthInPixels': 1920,
-                    'heightInPixels': 1080,
+                    'widthInPixels': is1440p ? 2560 : 1920,
+                    'heightInPixels': is1440p ? 1440 : 1080,
                 },
                 'pixelDensity': {
                     'dpiX': 2,

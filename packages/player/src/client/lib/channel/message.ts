@@ -90,15 +90,16 @@ export default class MessageChannel extends Channel {
         const deviceConfig = JSON.stringify(this.generateMessage('/streaming/characteristics/clientdevicecapabilities', {}))
         this.send(deviceConfig)
 
+        const { width, height } = this.getPlayer().getStreamDimensions()
         const dimensionsConfig = JSON.stringify(this.generateMessage('/streaming/characteristics/dimensionschanged', {
-            'horizontal': 1920,
-            'vertical': 1080,
-            'preferredWidth': 1920,
-            'preferredHeight': 1080,
+            'horizontal': width,
+            'vertical': height,
+            'preferredWidth': width,
+            'preferredHeight': height,
             'safeAreaLeft': 0,
             'safeAreaTop': 0,
-            'safeAreaRight': 1920,
-            'safeAreaBottom': 1080,
+            'safeAreaRight': width,
+            'safeAreaBottom': height,
             'supportsCustomResolution':true,
         }))
         this.send(dimensionsConfig)

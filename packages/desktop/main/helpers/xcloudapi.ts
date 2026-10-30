@@ -188,8 +188,8 @@ export default class xCloudApi {
                 },
                 'displayInfo': {
                     'dimensions': {
-                        'widthInPixels': 1920,
-                        'heightInPixels': 1080,
+                        'widthInPixels': 2560,
+                        'heightInPixels': 1440,
                     },
                     'pixelDensity': {
                         'dpiX': 1,

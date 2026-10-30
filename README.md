@@ -49,6 +49,19 @@ Keys are mapped as following by default:
     View: V
     Menu: M
 
+## Streaming quality
+
+Remote Play and xCloud request up to 2560×1440. For Remote Play, use an updated
+Xbox Series X|S and set the console's display resolution to 1440p or 4K UHD under
+**Settings > General > TV & display options**. For xCloud, 1440p requires Game Pass
+Ultimate and a supported game and region. Actual stream quality depends on the
+console or cloud service, receiving device, and network. The separate xHome and
+xCloud Streaming Bitrate settings still apply; their default of **Unlimited**
+lets the console or cloud service and network negotiate the bitrate.
+
+See [Xbox's Remote Play announcement](https://news.xbox.com/en-us/2026/09/09/xbox-insiders-october-2026-console-features-3/).
+For xCloud, see [Xbox's announcement of selectable streaming resolution](https://news.xbox.com/en-us/2025/11/25/xbox-november-update-gaming-copilot-full-screen-experience/).
+
 ## Streaming stats
 
 During the stream you can show debug statistics that contain extra data about the buffer queues and other information. To bring this up you can press `~` on your keyboard.

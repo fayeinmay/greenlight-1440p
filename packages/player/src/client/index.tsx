@@ -114,7 +114,7 @@ export const StreamPlayer = forwardRef<StreamPlayerHandle, StreamPlayerProps>(
 
             if(playerState === 'Provisioned'){
                 console.log('Xbox is ready to connect... Lets render xCloudPlayer lib...')
-                setPlayer(new xCloudPlayer('playerContainer'))
+                setPlayer(new xCloudPlayer('playerContainer', communicationHandler.getStreamConfig()))
             }
 
             return () => {

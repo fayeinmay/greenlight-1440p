@@ -1,5 +1,6 @@
 import { initTRPC } from '@trpc/server';
 import { z } from 'zod';
+import { xCloudStreamConfig } from './types/streamconfig.js';
 
 import pkg from '../package.json';
 
@@ -46,14 +47,6 @@ const zodUserToken = z.object({
   access_token: z.string(),
   refresh_token: z.string(),
   id_token: z.string(),
-})
-
-const xCloudStreamConfig = z.object({
-    id: z.string(),
-    type: z.enum(['home', 'cloud']),
-    language: z.string(),
-    host: z.string(),
-    resolution: z.union([z.literal(720), z.literal(1080)])
 })
 
 export const appRouter = router({
